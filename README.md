@@ -12,7 +12,8 @@ git push -u origin prod
 
 Delete the remote main branch on GitHub:
 >[!WARNING]
-> Es importante que te asegures de configurar manualmente en GitHub la rama default como la de **prod** y no la de **máin** para que este comando funcione.
+> It is important that you make sure to manually configure the default branch in GitHub as **prod** and not **main** for this command to work.
+
 ```
 git push origin --delete main
 ```
