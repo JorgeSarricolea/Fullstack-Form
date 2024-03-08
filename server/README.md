@@ -7,9 +7,9 @@ pnpm install express mysql knex body-parser dotenv
 
 ## The structure of your DB conncection (.env file):
 ```
-db_host=your_host
-db_port=your_port
-db_name=the_db_name
-db_user=your_user
-db_password=your_password
+DB_HOST=your_host
+DB_PORT=your_port
+DB_NAME=the_db_name
+DB_USER=your_user
+DB_PASSWORD=your_password
 ```
