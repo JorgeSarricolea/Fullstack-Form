@@ -1,11 +1,13 @@
-## Dependencies you will need:
+# GETTING STARTED
+
+Dependencies you will need 📦
 ```
 pnpm install express mysql knex body-parser dotenv
 ```
 >[!TIP]
-> In fact, you can always check the **package.json** file to check the dependencies and the version used.
+> In fact, you can always check the 🗃️ **package.json** file to check the dependencies and the version used.
 
-## The structure of your DB conncection (.env file):
+The structure of your DB conncection 🔒 (.env file):
 ```
 DB_HOST=your_host
 DB_PORT=your_port
