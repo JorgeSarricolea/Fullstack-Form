@@ -15,3 +15,8 @@ DB_NAME=the_db_name
 DB_USER=your_user
 DB_PASSWORD=your_password
 ```
+
+Once you have the project ready, 🚀 just run your Back-End server locally with the following command:
+```
+node app.js
+```
