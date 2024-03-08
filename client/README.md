@@ -16,7 +16,6 @@ pnpm astro add tailwindcss
 >[!TIP]
 > In fact, you can always check the 🗃️ **package.json** file to check the dependencies and the version used.
 
-
 Once you have the project ready, 🚀 just run Astro locally with the following command:
 ```
 pnpm run dev
