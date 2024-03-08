@@ -5,7 +5,7 @@
 pnpm create astro@latest
 ```
 
-For TailwindCSS
+## For TailwindCSS
 ```
 npx astro add tailwind
 pnpm astro add @astro/tailwind
@@ -14,7 +14,7 @@ pnpm astro add tailwindcss
 
 # Back-End
 
-Commands to initialize in our server folder:
+## Commands to initialize in our server folder:
 ```
 pnpm install express mysql knex body-parser dotenv
 ```
@@ -35,7 +35,7 @@ CREATE USER 'newUser'@'%' IDENTIFIED BY 'password';
 
 ## Grant all privileges to the new user. Run:
 ```
-GRANT ALL PRIVILEGES ON *.* TO 'nuevoUsuario'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'%' WITH GRANT OPTION;
 ```
 > [!TIP]
 > You can skip this line if you do not want to apply privileges to your new user.
