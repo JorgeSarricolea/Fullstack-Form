@@ -9,8 +9,7 @@ pnpm create astro@latest
 For TailwindCSS 🎨
 ```
 npx astro add tailwind
-pnpm astro add @astro/tailwind
-pnpm astro add tailwindcss
+npx tailwindcss init
 ```
 
 >[!TIP]
