@@ -1,6 +1,6 @@
 # Create the branches:
 
-Rename the main branch locally to prod:
+Rename the main branch locally to **prod**:
 ```
 git branch -m main prod
 ```
