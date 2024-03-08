@@ -1,3 +1,34 @@
+# Create the branches:
+
+Rename the main branch locally to prod:
+```
+git branch -m main prod
+```
+
+Change default branch settings:
+```
+git push -u origin prod
+```
+
+Delete the remote main branch on GitHub:
+>[!WARNING]
+> Es importante que te asegures de configurar manualmente en GitHub la rama default como la de **prod** y no la de **máin** para que este comando funcione.
+```
+git push origin --delete main
+```
+
+Create the **dev** and **hotfixes** branches:
+```
+git checkout -b dev
+git checkout -b hotfixes
+```
+
+Upload the new branches to the remote repository:
+```
+git push origin dev
+git push origin hotfixes
+```
+
 # Create a new user in MySQL
 
 Log in to MySQL as root or as a user with privileges to create new users:
