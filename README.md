@@ -31,7 +31,7 @@ mysql -u root -p
 CREATE USER 'newUser'@'%' IDENTIFIED BY 'password';
 ```
 > [!IMPORTANT]
-> This command creates a new userUser that can connect from any host (%). Change 'password' to a secure password.
+> This command creates a new user that can connect from any host (ex. "localhost"). Change 'password' to a secure password.
 
 ## Grant all privileges to the new user. Run:
 ```
