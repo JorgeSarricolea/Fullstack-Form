@@ -20,3 +20,16 @@ Once you have the project ready, 🚀 just run your Back-End server locally with
 ```
 node app.js
 ```
+
+# Back-End tetsing
+
+Create a JSON object to test in ThunderClient or PostMan **(POST)**:
+```
+{
+  "name": "John Doe",
+  "phoneNumber": "555-1234",
+  "email": "john.doe@example.com",
+  "message": "Hello, I'm interested in applying for the position.",
+  "profilePicture": "/path/to/picture3.jpg"
+}
+```
