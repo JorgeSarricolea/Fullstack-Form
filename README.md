@@ -1,11 +1,11 @@
 # Front-End
 
-### For Astro:
+For Astro:
 ```
 pnpm create astro@latest
 ```
 
-### For TailwindCSS
+For TailwindCSS
 ```
 npx astro add tailwind
 pnpm astro add @astro/tailwind
@@ -14,50 +14,50 @@ pnpm astro add tailwindcss
 
 # Back-End
 
-### Commands to initialize in our server folder:
+Commands to initialize in our server folder:
 ```
 pnpm install express mysql knex body-parser dotenv
 ```
 
 # Create a new user in MySQL
 
-### Log in to MySQL as root or as a user with privileges to create new users:
+Log in to MySQL as root or as a user with privileges to create new users:
 ```
 mysql -u root -p
 ```
 
-### Create the new user. Run the following command in the MySQL console:
+Create the new user. Run the following command in the MySQL console:
 ```
 CREATE USER 'newUser'@'%' IDENTIFIED BY 'password';
 ```
 > [!IMPORTANT]
 > This command creates a new user that can connect from any host (ex. "localhost"). Change 'password' to a secure password.
 
-### Grant all privileges to the new user. Run:
+Grant all privileges to the new user. Run:
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'%' WITH GRANT OPTION;
 ```
 > [!TIP]
 > You can skip this line if you do not want to apply privileges to your new user.
 
-### Apply the changes. Run:
+Apply the changes. Run:
 ```
 FLUSH PRIVILEGES;
 ```
 
 # Create the database
 
-### Create database fullstack_form if it does not exist:
+Create database fullstack_form if it does not exist:
 ```
 CREATE DATABASE IF NOT EXISTS fullstack_form;
 ```
 
-### Use fullstack_form database:
+Use fullstack_form database:
 ```
 USE fullstack_form;
 ```
 
-### Create the APPLICATIONS table:
+Create the APPLICATIONS table:
 ```
 CREATE TABLE APPLICATIONS (
     id VARCHAR(8) PRIMARY KEY,
@@ -69,7 +69,7 @@ CREATE TABLE APPLICATIONS (
 );
 ```
 
-### To avoid having a boring autoincremental id of 1, 2, 3... Let's create a more interesting one with a TRIGGER:
+To avoid having a boring autoincremental id of 1, 2, 3... Let's create a more interesting one with a TRIGGER:
 ```
 DELIMITER //
 
@@ -112,7 +112,7 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS generate_id;
 ```
 
-### Finally, let's do a test to put the data into our table:
+Finally, let's do a test to put the data into our table:
 ```
 INSERT INTO APPLICATIONS (name, phoneNumber, email, message, profilePicture) 
 VALUES 
@@ -120,7 +120,7 @@ VALUES
     ('María García', '9876543210', 'maria@example.com', 'Test message 2', '/path/to/picture2.jpg');
 ```
 
-### Show new data:
+Show new data:
 ```
 SELECT * FROM APPLICATIONS;
 ```
