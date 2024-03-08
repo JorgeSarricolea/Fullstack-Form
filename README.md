@@ -6,18 +6,18 @@ mysql -u root -p
 ```
 
 Create the new user. Run the following command in the MySQL console:
+> [!IMPORTANT]
+> This command creates a new user that can connect from any host (ex. "localhost"). Change 'password' to a secure password.
 ```
 CREATE USER 'newUser'@'%' IDENTIFIED BY 'password';
 ```
-> [!IMPORTANT]
-> This command creates a new user that can connect from any host (ex. "localhost"). Change 'password' to a secure password.
 
 Grant all privileges to the new user. Run:
+> [!TIP]
+> You can skip this line if you do not want to apply privileges to your new user.
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'%' WITH GRANT OPTION;
 ```
-> [!TIP]
-> You can skip this line if you do not want to apply privileges to your new user.
 
 Apply the changes. Run:
 ```
@@ -87,6 +87,7 @@ DELIMITER ;
 
 > [!WARNING]
 > If for some reason you already have a trigger created, it may cause a conflict, you can delete the one you have with the following command and then try to create the trigger again.
+
 ```
 DROP TRIGGER IF EXISTS generate_id;
 ```
