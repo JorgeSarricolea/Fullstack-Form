@@ -1,9 +1,9 @@
-## Full-Stack Form
+# Full-Stack Form
 I designed this repository with the goal of hosting a workshop to teach Git usage through a FullStack project tailored for beginners.
 
 ## Table of Contents
 
-- [Full-Stack Form]
+- [Full-Stack Form](#Full-Stack Form)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Getting Started](#getting-started)
@@ -14,7 +14,7 @@ I designed this repository with the goal of hosting a workshop to teach Git usag
   - [Contribution](#contribution)
   - [Copyright](#copyright)
  
-## Introuction
+# Introduction
 If you're delving into both frontend and backend development, this project could serve as an excellent challenge to apply and refine your skills.
 
 On the Front-End, Astro and TailwindCSS are used. Astro is a fast static site generator, while TailwindCSS is a utility-first CSS framework that speeds up styling.
