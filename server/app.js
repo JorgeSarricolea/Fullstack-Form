@@ -2,12 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const database = require("./database/database");
 
 // Applications
 const {
   createApplication,
+  getApplicationById,
   getApplications,
+  updateApplicationById,
+  deleteApplicationById,
 } = require("./database/applications");
 
 const app = express();
@@ -15,7 +17,14 @@ const app = express();
 app.use(bodyParser.json());
 
 // Applications
-require("./routes/applications")(app, createApplication, getApplications);
+require("./routes/applications")(
+  app,
+  createApplication,
+  getApplicationById,
+  getApplications,
+  updateApplicationById,
+  deleteApplicationById
+);
 
 // Listener
 const PORT = 1234;
