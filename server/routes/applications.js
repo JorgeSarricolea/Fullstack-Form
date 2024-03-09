@@ -1,3 +1,25 @@
+const multer = require("multer");
+const path = require("path");
+
+// Configuring Multer to store files to disk
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // Here 'uploads/' is the folder destination
+  },
+  filename: function (req, file, cb) {
+    // Construct new file name to avoid name conflicts
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+// Store files to disk
+const upload = multer({
+  storage: storage,
+});
+
 module.exports = function (
   app,
   createApplication,
@@ -38,14 +60,21 @@ module.exports = function (
   });
 
   // POST a new application
-  app.post("/applications", (req, res) => {
-    const newApplication = req.body;
+  app.post("/applications", upload.single("profilePicture"), (req, res) => {
+    // req.file now contains information about the saved file, including the path
+    const newApplication = {
+      ...req.body,
+      profilePicture: req.file ? req.file.path : null, // Save the file path
+    };
+
+    // Now newApplication contains the path of the file to save in the DB
     createApplication(newApplication)
       .then(() => {
         res.json({ message: "A new application was submitted!" });
       })
       .catch((error) => {
-        res.status(500).json({ error });
+        console.error(error);
+        res.status(500).json({ error: error.message || error });
       });
   });
 

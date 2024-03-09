@@ -7,7 +7,13 @@
   <body class="bg-gray-100">
     <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
       <h1 class="text-2xl font-bold mb-4">Application Form</h1>
-      <form id="applicationForm" class="space-y-4" action="/" method="post">
+      <form
+        id="applicationForm"
+        class="space-y-4"
+        action="http://localhost:1234/applications"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700"
             >Name</label
@@ -70,7 +76,7 @@
         </div>
         <div>
           <button
-            type="button"
+            type="submit"
             id="submitButton"
             class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
@@ -81,20 +87,13 @@
     </div>
 
     <script>
-      const submitButton = document.getElementById("submitButton");
       const applicationForm = document.getElementById(
         "applicationForm"
       ) as HTMLFormElement;
+      console.log(applicationForm);
 
-      submitButton.addEventListener("click", async () => {
-        const nameInput = document.getElementById("name") as HTMLInputElement;
-        const nameValue = nameInput.value.trim();
-
-        if (!nameValue) {
-          // Comprobar si el campo de nombre está vacío
-          alert("Please enter your name.");
-          return; // Salir de la función si el campo de nombre está vacío
-        }
+      applicationForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Prevent the page from reloading when submitting the form
 
         const formData = new FormData(applicationForm);
 
