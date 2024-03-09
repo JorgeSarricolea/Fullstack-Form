@@ -1,8 +1,8 @@
 module.exports = function (
   app,
   createApplication,
-  getApplications,
   getApplicationById,
+  getApplications,
   updateApplicationById,
   deleteApplicationById
 ) {
@@ -29,17 +29,11 @@ module.exports = function (
     const id = req.params.id;
     getApplicationById(id)
       .then((application) => {
-        if (application) {
-          // Verificar si se encontró una aplicación
-          res.json(application);
-        } else {
-          res.status(404).json({ message: "Application not found" });
-        }
+        res.json(application);
       })
       .catch((error) => {
-        res
-          .status(500)
-          .json({ message: "Get application by id is not working:/" });
+        res.json({ message: "Get application by id is not working:/" });
+        res.status(500).json({ error });
       });
   });
 
