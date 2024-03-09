@@ -1,31 +1,33 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List of Application</title>
     <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
     />
   </head>
-  <body class="bg-gray-100">
-    <div class="w-fit mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+  <body class="bg-gray-100 px-8">
+    <div class="w-fit mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h1 class="text-2xl font-bold mb-4">List of Application</h1>
-      <table
-        id="applicationTable"
-        class="hidden mt-4 w-full border-collapse border border-gray-800"
-      >
+      <table id="applicationTable" class="hidden mt-4 w-full border-collapse">
         <thead>
-          <tr>
-            <th class="border border-gray-800 px-4 py-2">Name</th>
-            <th class="border border-gray-800 px-4 py-2">Email</th>
-            <th class="border border-gray-800 px-4 py-2">Phone Number</th>
-            <th class="border border-gray-800 px-4 py-2">Message</th>
-            <th class="border border-gray-800 px-4 py-2">Profile Picture</th>
-            <th class="border border-gray-800 px-4 py-2">Actions</th>
+          <tr class="bg-blue-500 text-white">
+            <th class="border-b-3 px-4 py-2 rounded-tl-lg">Name</th>
+            <th class="border-b-3 px-4 py-2">Email</th>
+            <th class="border-b-3 px-4 py-2">Phone Number</th>
+            <th class="border-b-3 px-4 py-2">Message</th>
+            <th class="border-b-3 px-4 py-2">Profile Picture</th>
+            <th class="border-b-3 px-4 py-2 rounded-tr-lg">Actions</th>
           </tr>
         </thead>
-        <tbody id="applicationTableBody"> </tbody>
+        <tbody id="applicationTableBody"></tbody>
       </table>
     </div>
   </body>
@@ -57,21 +59,24 @@
             // Display the table
             applicationTable.classList.remove("hidden");
             // Iterate over each application and create a table row
-            data.forEach((application) => {
+            data.forEach((application, index) => {
               const row = document.createElement("tr");
+              row.classList.add(index % 2 === 0 ? "bg-gray-200" : "bg-white"); // Alternate row colors
+              row.style.height = "70px";
               row.innerHTML = `
-    <td class="border border-gray-800 px-4 py-2">${application.name}</td>
-    <td class="border border-gray-800 px-4 py-2">${application.email}</td>
-    <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
-    <td class="border border-gray-800 px-4 py-2">${application.message}</td>
-    <td class="border border-gray-800 px-4 py-2"><img src="${url}/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
-    <td class="border border-gray-800 px-4 py-2"></td>
-  `;
+                  <td class="border-b text-center px-4 py-2">${application.name}</td>
+                  <td class="border-b text-center px-4 py-2">${application.email}</td>
+                  <td class="border-b text-center px-4 py-2">${application.phoneNumber}</td>
+                  <td class="border-b text-center px-4 py-2">${application.message}</td>
+                  <td class="border-b text-center px-4 py-2"><img src="${url}/${application.profilePicture}" alt="Profile Picture" style="max-height: 50px; margin: auto; display: flex;"></td>
+                  <td class="border-b text-center px-4 py-2"></td>
+                `;
 
               // Crear icono de eliminación
               const deleteIcon = document.createElement("i");
               deleteIcon.className = "fas fa-trash-alt";
               deleteIcon.style.cursor = "pointer";
+              deleteIcon.classList.add("hover:text-red-500");
               deleteIcon.onclick = function () {
                 deleteApplication(application.id, deleteIcon);
               };
@@ -81,7 +86,8 @@
               const editIcon = document.createElement("i");
               editIcon.className = "fas fa-pencil-alt";
               editIcon.style.cursor = "pointer";
-              editIcon.style.marginLeft = "10px";
+              editIcon.style.marginLeft = "20px";
+              editIcon.classList.add("hover:text-blue-500");
               editIcon.onclick = function () {
                 window.location.href = `edit-application?id=${application.id}`;
               };
