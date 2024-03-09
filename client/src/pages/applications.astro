@@ -26,6 +26,8 @@
     </div>
 
     <script>
+      const url = "http://localhost:1234";
+
       window.addEventListener("DOMContentLoaded", async () => {
         const applicationTable = document.getElementById("applicationTable");
         const applicationTableBody = document.getElementById(
@@ -34,7 +36,7 @@
 
         if (applicationTable && applicationTableBody) {
           try {
-            const response = await fetch("http://localhost:1234/applications");
+            const response = await fetch(`${url}/applications`);
             const data = await response.json();
 
             if (response.ok) {
@@ -48,7 +50,7 @@
                                 <td class="border border-gray-800 px-4 py-2">${application.email}</td>
                                 <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
                                 <td class="border border-gray-800 px-4 py-2">${application.message}</td>
-                                <td class="border border-gray-800 px-4 py-2"><img src="http://localhost:1234/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
+                                <td class="border border-gray-800 px-4 py-2"><img src="${url}/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
                             `;
                   applicationTableBody.appendChild(row);
                 });

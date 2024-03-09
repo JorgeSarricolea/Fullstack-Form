@@ -87,6 +87,8 @@
     </div>
 
     <script>
+      const url = "http://localhost:1234";
+
       const applicationForm = document.getElementById(
         "applicationForm"
       ) as HTMLFormElement;
@@ -98,7 +100,7 @@
         const formData = new FormData(applicationForm);
 
         try {
-          const response = await fetch("http://localhost:1234/applications", {
+          const response = await fetch(`${url}/applications`, {
             method: "POST",
             body: formData,
           });
