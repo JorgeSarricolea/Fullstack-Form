@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require('path');
 
 // Applications
 const {
@@ -14,6 +15,9 @@ const {
 } = require("./database/applications");
 
 const app = express();
+
+// Hanlde images paths
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(bodyParser.json());
 app.use(cors());

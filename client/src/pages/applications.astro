@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -5,7 +6,7 @@
     <title>List of Application</title>
   </head>
   <body class="bg-gray-100">
-    <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+    <div class="w-fit mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
       <h1 class="text-2xl font-bold mb-4">List of Application</h1>
       <table
         id="applicationTable"
@@ -17,6 +18,7 @@
             <th class="border border-gray-800 px-4 py-2">Email</th>
             <th class="border border-gray-800 px-4 py-2">Phone Number</th>
             <th class="border border-gray-800 px-4 py-2">Message</th>
+            <th class="border border-gray-800 px-4 py-2">Profile Picture</th>
           </tr>
         </thead>
         <tbody id="applicationTableBody"> </tbody>
@@ -46,6 +48,7 @@
                                 <td class="border border-gray-800 px-4 py-2">${application.email}</td>
                                 <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
                                 <td class="border border-gray-800 px-4 py-2">${application.message}</td>
+                                <td class="border border-gray-800 px-4 py-2"><img src="http://localhost:1234/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
                             `;
                   applicationTableBody.appendChild(row);
                 });
