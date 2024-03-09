@@ -3,7 +3,7 @@ I designed this repository with the goal of hosting a workshop to teach Git usag
 
 ## Table of Contents
 
-- [Full-Stack Form](#Full-Stack Form)
+- [Full-Stack Form](#Full-Stack-Form)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Getting Started](#getting-started)
