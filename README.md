@@ -1,3 +1,38 @@
+## Full-Stack Form
+I designed this repository with the goal of hosting a workshop to teach Git usage through a FullStack project tailored for beginners.
+
+## Table of Contents
+
+- [Full-Stack Form]
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Features](#features)
+  - [Deployment](#deployment)
+  - [Contribution](#contribution)
+  - [Copyright](#copyright)
+ 
+## Introuction
+If you're delving into both frontend and backend development, this project could serve as an excellent challenge to apply and refine your skills.
+
+On the Front-End, Astro and TailwindCSS are used. Astro is a fast static site generator, while TailwindCSS is a utility-first CSS framework that speeds up styling.
+
+On the Back-End, NodeJS, ExpressJS, and MySQL are employed. NodeJS allows running JavaScript on servers, ExpressJS simplifies web app development, and MySQL is a popular relational database.
+
+These technologies boost productivity, improve performance, and simplify development, enabling developers to focus on creating engaging user experiences.
+
+Remember that there are two servers, one for the front-end and another for the back-end. To run the frontend, go to the **client** folder and execute the following command:
+```
+pnpm run dev
+```
+
+For the back-end, navigate to the **server** folder and execute this command:
+```
+node app.js
+```
+
 # Create the branches:
 
 Rename the main branch locally to **prod**:
