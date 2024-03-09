@@ -1,0 +1,172 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Application</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+      <h1 class="text-2xl font-bold mb-4">Edit Application</h1>
+      <form id="editApplicationForm" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700"
+            >Name</label
+          >
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label
+            for="phoneNumber"
+            class="block text-sm font-medium text-gray-700">Phone Number</label
+          >
+          <input
+            type="tel"
+            name="phoneNumber"
+            id="phoneNumber"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label
+            for="profilePicture"
+            class="block text-sm font-medium text-gray-700"
+            >Profile Picture</label
+          >
+          <input
+            type="file"
+            name="profilePicture"
+            id="profilePicture"
+            accept="image/*"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700"
+            >Message</label
+          >
+          <textarea
+            name="message"
+            id="message"
+            rows="3"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          ></textarea>
+        </div>
+        <div>
+          <button
+            type="submit"
+            id="updateButton"
+            class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >Update</button
+          >
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Function to extract URL parameters
+      function getParameterByName(name: string) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Define the base URL for API requests
+      const url = "http://localhost:1234";
+
+      // Event listener that triggers when the DOM content is loaded
+      window.addEventListener("DOMContentLoaded", async () => {
+        const editApplicationForm = document.getElementById(
+          "editApplicationForm"
+        ) as HTMLFormElement | null;
+
+        if (editApplicationForm) {
+          // Get the application ID from the URL parameter
+          const applicationId = getParameterByName("id");
+
+          if (applicationId) {
+            // Fetch application data using the application ID
+            try {
+              const response = await fetch(
+                `${url}/applications/${applicationId}`
+              );
+              if (response.ok) {
+                const applicationData = await response.json();
+
+                // Populate form fields with application data
+                (document.getElementById("name") as HTMLInputElement).value =
+                  applicationData.name;
+                (document.getElementById("email") as HTMLInputElement).value =
+                  applicationData.email;
+                (
+                  document.getElementById("phoneNumber") as HTMLInputElement
+                ).value = applicationData.phoneNumber;
+                (
+                  document.getElementById("message") as HTMLTextAreaElement
+                ).value = applicationData.message;
+
+                // Handle form submission to update application data
+                editApplicationForm.addEventListener(
+                  "submit",
+                  async (event) => {
+                    event.preventDefault();
+                    const formData = new FormData(editApplicationForm);
+                    try {
+                      const response = await fetch(
+                        `${url}/applications/${applicationId}`,
+                        {
+                          method: "PUT",
+                          body: formData,
+                        }
+                      );
+                      if (response.ok) {
+                        alert("Application updated successfully!");
+                        window.location.href = "/applications"; // Redirect to the list of applications page
+                      } else {
+                        const errorMessage = await response.text();
+                        alert(`Error: ${errorMessage}`);
+                      }
+                    } catch (error) {
+                      console.error("Error updating application:", error);
+                      alert(
+                        "An error occurred while updating the application. Please try again later."
+                      );
+                    }
+                  }
+                );
+              } else {
+                throw new Error("Failed to fetch application data");
+              }
+            } catch (error) {
+              console.error("Error fetching application data:", error);
+              alert(
+                "An error occurred while fetching application data. Please try again later."
+              );
+            }
+          } else {
+            console.error("Application ID not found in URL");
+            alert("Application ID not found in URL");
+          }
+        } else {
+          console.error("Edit application form not found");
+          alert("Edit application form not found");
+        }
+      });
+    </script>
+  </body>
+</html>

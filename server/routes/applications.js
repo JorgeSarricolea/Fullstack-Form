@@ -78,16 +78,23 @@ module.exports = function (
       });
   });
 
-  // PUT update an application by ID
-  app.put("/applications/:id", (req, res) => {
+  // PUT update an application by ID, including updating the profile picture
+  app.put("/applications/:id", upload.single("profilePicture"), (req, res) => {
     const id = req.params.id;
     const updatedFields = req.body;
+
+    // If a new profile picture was uploaded, update the profilePicture field
+    if (req.file) {
+      updatedFields.profilePicture = req.file.path;
+    }
+
     updateApplicationById(id, updatedFields)
       .then(() => {
         res.json({ message: "Application updated successfully" });
       })
       .catch((error) => {
-        res.status(500).json({ error });
+        console.error(error);
+        res.status(500).json({ error: error.message || error });
       });
   });
 

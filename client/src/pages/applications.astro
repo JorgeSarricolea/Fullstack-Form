@@ -1,9 +1,12 @@
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List of Application</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
   <body class="bg-gray-100">
     <div class="w-fit mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
@@ -19,57 +22,110 @@
             <th class="border border-gray-800 px-4 py-2">Phone Number</th>
             <th class="border border-gray-800 px-4 py-2">Message</th>
             <th class="border border-gray-800 px-4 py-2">Profile Picture</th>
+            <th class="border border-gray-800 px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody id="applicationTableBody"> </tbody>
       </table>
     </div>
-
-    <script>
-      const url = "http://localhost:1234";
-
-      window.addEventListener("DOMContentLoaded", async () => {
-        const applicationTable = document.getElementById("applicationTable");
-        const applicationTableBody = document.getElementById(
-          "applicationTableBody"
-        );
-
-        if (applicationTable && applicationTableBody) {
-          try {
-            const response = await fetch(`${url}/applications`);
-            const data = await response.json();
-
-            if (response.ok) {
-              if (data.length > 0) {
-                // Show table and add rows with data from database
-                applicationTable.classList.remove("hidden");
-                data.forEach((application) => {
-                  const row = document.createElement("tr");
-                  row.innerHTML = `
-                                <td class="border border-gray-800 px-4 py-2">${application.name}</td>
-                                <td class="border border-gray-800 px-4 py-2">${application.email}</td>
-                                <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
-                                <td class="border border-gray-800 px-4 py-2">${application.message}</td>
-                                <td class="border border-gray-800 px-4 py-2"><img src="${url}/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
-                            `;
-                  applicationTableBody.appendChild(row);
-                });
-              } else {
-                alert("No applications found.");
-              }
-            } else {
-              alert(`Error: ${data.message}`);
-            }
-          } catch (error) {
-            console.error("Error fetching applications:", error);
-            alert(
-              "An error occurred while fetching applications. Please try again later."
-            );
-          }
-        } else {
-          console.error("The table elements were not found.");
-        }
-      });
-    </script>
   </body>
 </html>
+
+<script>
+  // Define the base URL for API requests
+  const url = "http://localhost:1234";
+
+  // Event listener that triggers when the DOM content is loaded
+  window.addEventListener("DOMContentLoaded", async () => {
+    // Get references to the application table and its body
+    const applicationTable = document.getElementById("applicationTable");
+    const applicationTableBody = document.getElementById(
+      "applicationTableBody"
+    );
+
+    // Check if the table elements exist
+    if (applicationTable && applicationTableBody) {
+      try {
+        // Fetch application data from the server
+        const response = await fetch(`${url}/applications`);
+        const data = await response.json();
+
+        // Check if the response is successful
+        if (response.ok) {
+          // If applications are found, populate the table with data
+          if (data.length > 0) {
+            // Display the table
+            applicationTable.classList.remove("hidden");
+            // Iterate over each application and create a table row
+            data.forEach((application) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+    <td class="border border-gray-800 px-4 py-2">${application.name}</td>
+    <td class="border border-gray-800 px-4 py-2">${application.email}</td>
+    <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
+    <td class="border border-gray-800 px-4 py-2">${application.message}</td>
+    <td class="border border-gray-800 px-4 py-2"><img src="${url}/${application.profilePicture}" alt="Profile Picture" style="max-width: 100px;"></td>
+    <td class="border border-gray-800 px-4 py-2"></td>
+  `;
+
+              // Crear icono de eliminación
+              const deleteIcon = document.createElement("i");
+              deleteIcon.className = "fas fa-trash-alt";
+              deleteIcon.style.cursor = "pointer";
+              deleteIcon.onclick = function () {
+                deleteApplication(application.id, deleteIcon);
+              };
+              row.children[5].appendChild(deleteIcon);
+
+              // Crear icono de edición
+              const editIcon = document.createElement("i");
+              editIcon.className = "fas fa-pencil-alt";
+              editIcon.style.cursor = "pointer";
+              editIcon.style.marginLeft = "10px";
+              editIcon.onclick = function () {
+                window.location.href = `edit-application?id=${application.id}`;
+              };
+              row.children[5].appendChild(editIcon);
+
+              applicationTableBody.appendChild(row);
+            });
+          } else {
+            alert("No applications found.");
+          }
+        } else {
+          alert(`Error: ${data.message}`);
+        }
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+        alert(
+          "An error occurred while fetching applications. Please try again later."
+        );
+      }
+    } else {
+      console.error("The table elements were not found.");
+    }
+  });
+
+  // Function to delete an application
+  async function deleteApplication(applicationId, element) {
+    if (confirm("Are you sure you want to delete this application?")) {
+      try {
+        // Send a DELETE request to delete the application
+        const response = await fetch(`${url}/applications/${applicationId}`, {
+          method: "DELETE",
+        });
+        // If the request is successful, remove the table row from the DOM
+        if (response.ok) {
+          element.closest("tr").remove();
+        } else {
+          alert("Failed to delete the application.");
+        }
+      } catch (error) {
+        console.error("Error deleting application:", error);
+        alert(
+          "An error occurred while trying to delete the application. Please try again later."
+        );
+      }
+    }
+  }
+</script>
