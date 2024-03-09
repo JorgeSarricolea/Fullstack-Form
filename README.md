@@ -10,25 +10,56 @@ I designed this repository with the goal of hosting a workshop to teach Git usag
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
   - [Features](#features)
-  - [Deployment](#deployment)
   - [Contribution](#contribution)
   - [Copyright](#copyright)
  
 # Introduction
 If you're delving into both frontend and backend development, this project could serve as an excellent challenge to apply and refine your skills.
 
-On the Front-End, Astro and TailwindCSS are used. Astro is a fast static site generator, while TailwindCSS is a utility-first CSS framework that speeds up styling.
+On the Front-End, **Astro 🚀** and **TailwindCSS 🎨** are used. Astro is a fast static site generator, while TailwindCSS is a utility-first CSS framework that speeds up styling.
 
-On the Back-End, NodeJS, ExpressJS, and MySQL are employed. NodeJS allows running JavaScript on servers, ExpressJS simplifies web app development, and MySQL is a popular relational database.
+On the Back-End, **NodeJS ✅**, **ExpressJS ⚙️**, and **MySQL 🗄️** are employed. NodeJS allows running JavaScript on servers, ExpressJS simplifies web app development, and MySQL is a popular relational database.
 
 These technologies boost productivity, improve performance, and simplify development, enabling developers to focus on creating engaging user experiences.
 
-Remember that there are two servers, one for the front-end and another for the back-end. To run the frontend, go to the **client** folder and execute the following command:
+# Getting Started
+
+> [!TIP]
+> I recommend installing Node Version Manager and using the stable version.
+
+```bash
+# Install nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+# Check the version of nvm installed
+nvm --version
+
+# Install the stable version of Node
+nvm install stable
+
+# Check the version of Node installed
+node -v
+```
+
+### Prerequisites
+
+> [!IMPORTANT]
+> **Node.js:** Ensure that you have Node.js installed on your system.
+
+### Installation
+
+1. Clone the repository to your local machine:
+
+```
+git clone https://github.com/JorgeSarricolea/Fullstack-Form
+```
+
+2. Remember that there are two servers, one for the front-end and another for the back-end. To run the frontend, go to the **client** folder and execute the following command:
 ```
 pnpm run dev
 ```
 
-For the back-end, navigate to the **server** folder and execute this command:
+3. For the back-end, navigate to the **server** folder and execute this command:
 ```
 node app.js
 ```
@@ -172,3 +203,10 @@ Show new data:
 SELECT * FROM APPLICATIONS;
 ```
 
+## Contribution
+
+While contributions to this project are welcome. If you would like to contribute, feel free to fork this repository and submit a pull request.
+
+## Copyright
+
+This project was created by [Jorge Sarricolea](https://jorgesarricolea.com). if you have any specific code questions or would like to chat about programming, feel free to contact me on [WhatsApp](https://wa.me/529381095593).
