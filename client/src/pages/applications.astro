@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List of Application</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+      <h1 class="text-2xl font-bold mb-4">List of Application</h1>
+      <table
+        id="applicationTable"
+        class="hidden mt-4 w-full border-collapse border border-gray-800"
+      >
+        <thead>
+          <tr>
+            <th class="border border-gray-800 px-4 py-2">Name</th>
+            <th class="border border-gray-800 px-4 py-2">Email</th>
+            <th class="border border-gray-800 px-4 py-2">Phone Number</th>
+            <th class="border border-gray-800 px-4 py-2">Message</th>
+          </tr>
+        </thead>
+        <tbody id="applicationTableBody"> </tbody>
+      </table>
+    </div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        const applicationTable = document.getElementById("applicationTable");
+        const applicationTableBody = document.getElementById(
+          "applicationTableBody"
+        );
+
+        if (applicationTable && applicationTableBody) {
+          try {
+            const response = await fetch("http://localhost:1234/applications");
+            const data = await response.json();
+
+            if (response.ok) {
+              if (data.length > 0) {
+                // Show table and add rows with data from database
+                applicationTable.classList.remove("hidden");
+                data.forEach((application) => {
+                  const row = document.createElement("tr");
+                  row.innerHTML = `
+                                <td class="border border-gray-800 px-4 py-2">${application.name}</td>
+                                <td class="border border-gray-800 px-4 py-2">${application.email}</td>
+                                <td class="border border-gray-800 px-4 py-2">${application.phoneNumber}</td>
+                                <td class="border border-gray-800 px-4 py-2">${application.message}</td>
+                            `;
+                  applicationTableBody.appendChild(row);
+                });
+              } else {
+                alert("No applications found.");
+              }
+            } else {
+              alert(`Error: ${data.message}`);
+            }
+          } catch (error) {
+            console.error("Error fetching applications:", error);
+            alert(
+              "An error occurred while fetching applications. Please try again later."
+            );
+          }
+        } else {
+          console.error("The table elements were not found.");
+        }
+      });
+    </script>
+  </body>
+</html>

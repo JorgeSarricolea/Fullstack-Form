@@ -1,9 +1,7 @@
----
-
----
-
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Application Form</title>
   </head>
   <body class="bg-gray-100">
@@ -19,6 +17,7 @@
             name="name"
             id="name"
             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
           />
         </div>
         <div>
@@ -71,7 +70,8 @@
         </div>
         <div>
           <button
-            type="submit"
+            type="button"
+            id="submitButton"
             class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Submit
@@ -79,5 +79,45 @@
         </div>
       </form>
     </div>
+
+    <script>
+      const submitButton = document.getElementById("submitButton");
+      const applicationForm = document.getElementById(
+        "applicationForm"
+      ) as HTMLFormElement;
+
+      submitButton.addEventListener("click", async () => {
+        const nameInput = document.getElementById("name") as HTMLInputElement;
+        const nameValue = nameInput.value.trim();
+
+        if (!nameValue) {
+          // Comprobar si el campo de nombre está vacío
+          alert("Please enter your name.");
+          return; // Salir de la función si el campo de nombre está vacío
+        }
+
+        const formData = new FormData(applicationForm);
+
+        try {
+          const response = await fetch("http://localhost:1234/applications", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            alert("Application submitted successfully!");
+            applicationForm.reset();
+          } else {
+            const errorMessage = await response.text();
+            alert(`Error: ${errorMessage}`);
+          }
+        } catch (error) {
+          console.error("Error submitting application:", error);
+          alert(
+            "An error occurred while submitting the application. Please try again later."
+          );
+        }
+      });
+    </script>
   </body>
 </html>
