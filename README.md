@@ -10,6 +10,9 @@ I designed this repository with the goal of hosting a workshop to teach Git usag
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
   - [Features](#features)
+  - [Create the Branches](#create-the-branches)
+  - [Create a new user in MySQL](#create-a-new-user-in-mysql)
+  - [Create the Database](#create-the-database)
   - [Contribution](#contribution)
   - [Copyright](#copyright)
  
@@ -64,7 +67,7 @@ pnpm run dev
 node app.js
 ```
 
-# Create the branches:
+# Create the Branches
 
 Rename the main branch locally to **prod**:
 ```
@@ -122,7 +125,7 @@ Apply the changes. Run:
 FLUSH PRIVILEGES;
 ```
 
-# Create the database
+# Create the Database
 
 Create database fullstack_form if it does not exist:
 ```
