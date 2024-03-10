@@ -67,6 +67,18 @@ pnpm run dev
 node app.js
 ```
 
+## Features
+
+Some of the key features of this project include:
+
+- **Structured API:** It includes all the necessary endpoints for performing CRUD operations.
+
+- **Complete CRUD:** The form has functions to create, read, update, and delete requests made through the form.
+
+- **Image Saving:** The API can process images and display them on the front-end.
+
+- **Responsive Design:** It adapts to screens of all types using TailwindCSS.
+
 # Create the Branches
 
 Rename the main branch locally to **prod**:
