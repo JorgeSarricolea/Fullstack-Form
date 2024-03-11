@@ -27,7 +27,7 @@ Create a JSON object to test in ThunderClient or PostMan **(POST)**:
 ```
 {
   "name": "John Doe",
-  "phoneNumber": "555-1234",
+  "phoneNumber": "5551234999",
   "email": "john.doe@example.com",
   "message": "Hello, I'm interested in applying for the position.",
   "profilePicture": "/path/to/picture3.jpg"
