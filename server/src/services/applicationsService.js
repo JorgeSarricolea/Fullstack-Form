@@ -1,4 +1,4 @@
-const knex = require("./database"); // Import knex object from database.js
+const knex = require("../database/database"); // Import knex object from database.js
 
 const table = "APPLICATIONS";
 
