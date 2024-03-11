@@ -6,6 +6,14 @@ Dependencies you will need 📦
 ```
 pnpm install express mysql knex body-parser dotenv cors multer nodemon
 ```
+>[!IMPORTANT]
+> Remember to configure your **package.json** file for nodemon to work.
+```
+"scripts": {
+  "start": "node ./src/app.js",
+  "dev": "nodemon ./src/app.js"
+}
+```
 
 The structure of your DB conncection 🔒 (.env file):
 ```
