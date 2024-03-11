@@ -18,8 +18,7 @@ DB_PSWD=your_password
 
 Once you have the project ready, 🚀 just run your Back-End server locally with the following command:
 ```
-node app.js
-```
+pnpm run dev```
 
 # Back-End tetsing
 
