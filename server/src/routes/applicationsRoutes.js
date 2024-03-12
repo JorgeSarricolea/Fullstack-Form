@@ -4,13 +4,14 @@ const path = require("path");
 // Configuring Multer to store files to disk
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/"); // Here 'uploads/' is the folder destination
+    cb(null, "./src/uploads/"); // Here '.src/uploads/' is the destination folder
   },
   filename: function (req, file, cb) {
-    // Construct new file name to avoid name conflicts
+    // Construct a new file name to avoid name conflicts
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
     );
   },
 });
