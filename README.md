@@ -1,7 +1,7 @@
 # Full-Stack Form
 I designed this repository with the goal of hosting a workshop to teach Git usage through a FullStack project tailored for beginners.
 
-Visit this playlist to learn from scratch [Full-Stack Development](https://youtube.com/playlist?list=PLzwCelckJeHv5xt2HmNTd3NuvIzMaeZ6F&si=YDAQkfIMOe-3FaYz)
+Visit this playlist to learn from scratch [Full-Stack Development](https://youtube.com/playlist?list=PLzwCelckJeHv5xt2HmNTd3NuvIzMaeZ6F&si=YDAQkfIMOe-3FaYz) (Spanis).
 
 ## Table of Contents
 
